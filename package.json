@@ -1,5 +1,5 @@
 {
-  "homepage": "",
+  "homepage": "https://talha125-git.github.io/intern_p2",
   "name": "couple",
   "private": true,
   "version": "0.0.0",
@@ -7,6 +7,10 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+
+    "predeploy": "npm run build",   
+    "deploy":    "gh-pages -d dist",
+
     "lint": "eslint .",
     "preview": "vite preview"
   },

@@ -1,0 +1,17 @@
+✅ Steps to Update & Deploy Portfolio
+
+🔹 1. Make your changes in code
+		(Edit your files in VS Code)
+
+🔹 2. Run the following commands in terminal:
+		git add .
+		git commit -m "Add Dropdown to Who_We_Assist"
+		git push origin main
+
+		npm run build
+		npm run deploy
+🔹 3. Build the updated project
+		npm run build
+
+🔹 4. Deploy to GitHub Pages (using gh branch)
+		npm run deploy
