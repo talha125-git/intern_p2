@@ -3,6 +3,7 @@ import Header_1 from "./Componants/Header_1.jsx";
 import Hero_2 from "./Componants/Hero_2.jsx";
 import Trusted_3 from "./Componants/Trusted_3.jsx";
 import Manage_4 from './Componants/Manage_4.jsx'
+import Flexible_workforce_5 from './Componants/5_Flexible_workforce.jsx'
 import "./App.css";
 
 function HomePage() {
@@ -11,6 +12,7 @@ function HomePage() {
       <Hero_2 />
       <Trusted_3 />
       <Manage_4 />
+      <Flexible_workforce_5 />
     </>
   );
 }
