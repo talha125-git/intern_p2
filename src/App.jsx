@@ -1,25 +1,31 @@
-import { useState } from 'react'
-import { BrowserRouter as Router, Routes } from 'react-router-dom';
-import Header from './Componants/Header_1.jsx'
-import Header_2 from './Componants/Header_2.jsx'
-import './App.css'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Header_1 from "./Componants/Header_1.jsx";
+import Hero_2 from "./Componants/Hero_2.jsx";
+import "./App.css";
 
-function App() {
- 
-
+function HomePage() {
   return (
-     <Router>
-      {/* <Header /> */}
-      <Header_2 />
+    <>
+      <Hero_2 />
       
-        <Routes>
-          {/* <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} /> */}
-        </Routes>
-      
-    </Router>
+    </>
   );
-  
 }
 
-export default App
+function App() {
+  return (
+    <Router basename="/intern_p2">
+      <div className="min-h-screen">
+        <Header_1 />
+
+        <main className="pt-16">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+          </Routes>
+        </main>
+      </div>
+    </Router>
+  );
+}
+
+export default App;

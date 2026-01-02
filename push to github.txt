@@ -5,7 +5,7 @@
 
 🔹 2. Run the following commands in terminal:
 		git add .
-		git commit -m "Add Dropdown to Who_We_Assist"
+		git commit -m "Add Hero_2 Section and change logo"
 		git push origin main
 
 		npm run build
