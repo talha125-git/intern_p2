@@ -8,12 +8,16 @@ import { motion, AnimatePresence } from "framer-motion";
 import logo from '../assets/logo_p2.png'
 
 import SignUp_btn from "./SignUp_btn.jsx"
+import SignIn_btn from "./SignIn_btn.jsx";
 
 
 const Header = () => {
-    // JS for sign up btn
-    const [signUpModalOpen, setSignUpModalOpen] = useState(false);
-     // JS for sign up btn
+    // Sign In modal
+    const [signInOpen, setSignInOpen] = useState(false);
+
+    // Sign Up modal
+    const [signUpOpen, setSignUpOpen] = useState(false);
+
     const [menuOpen, setMenuOpen] = useState(false);
     const [mobileDropdown, setMobileDropdown] = useState(null);
     const [searchOpen, setSearchOpen] = useState(false);
@@ -37,19 +41,8 @@ const Header = () => {
         };
     }, [menuOpen]);
 
-    const handleSearchSubmit = (e) => {
-        e.preventDefault();
-        if (searchQuery.trim()) {
-            console.log("Searching for:", searchQuery);
-            // Handle search logic here
-            // For example: navigate to search results page
-            // navigate(`/search?q=${encodeURIComponent(searchQuery)}`);
 
-            // Close search bar after submit
-            setSearchOpen(false);
-            setSearchQuery("");
-        }
-    };
+
 
     const menuItems = [
         {
@@ -167,12 +160,12 @@ const Header = () => {
             text: "For workers",
             link: "/For_workers",
             dropdown: [
-                { text: "Find work",            link: "/" },
+                { text: "Find work", link: "/" },
                 { text: "Registration process", link: "/" },
-                { text: "Payments",             link: "/" },
-                { text: "Community",            link: "/" },
-                { text: "Help centre",          link: "/" },
-                { text: "Download app",         link: "/" },
+                { text: "Payments", link: "/" },
+                { text: "Community", link: "/" },
+                { text: "Help centre", link: "/" },
+                { text: "Download app", link: "/" },
             ]
         },
         {
@@ -180,10 +173,10 @@ const Header = () => {
             link: "/",
             dropdown: [
                 { text: "Customer Stories", link: "/" },
-                { text: "Blog",             link: "/" },
-                { text: "Legal",            link: "/" },
-                { text: "Hospitality",      link: "/" },
-                { text: "Help and contact", link: "/" }, 
+                { text: "Blog", link: "/" },
+                { text: "Legal", link: "/" },
+                { text: "Hospitality", link: "/" },
+                { text: "Help and contact", link: "/" },
             ]
         },
         {
@@ -191,8 +184,8 @@ const Header = () => {
             link: "/",
             dropdown: [
                 { text: "Who are we", link: "/" },
-                { text: "Careers",    link: "/" },
-                
+                { text: "Careers", link: "/" },
+
             ]
         },
     ];
@@ -250,7 +243,7 @@ const Header = () => {
                                     >
                                         {item.text}
                                         {item.dropdown && <IoIosArrowDown className="ml-1" />}
-                                       <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-[#eb7515] opacity-0 group-hover:left-0 group-hover:w-full group-hover:opacity-100 transition-all duration-300 origin-center"></span>
+                                        <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-[#eb7515] opacity-0 group-hover:left-0 group-hover:w-full group-hover:opacity-100 transition-all duration-300 origin-center"></span>
                                     </Link>
                                 </div>
 
@@ -302,25 +295,36 @@ const Header = () => {
                         )}
                     </button>
 
-                    {/*  Button */}
+                    {/* Buttons */}
                     <div className="flex items-center space-x-3">
-                        <button className="px-5 py-2 hover:bg-[#1E6EA7] rounded-md bg-transparent border hover:text-white transition-all duration-200 font-medium ">
+                        {/* Sign In */}
+                        <button
+                            className="px-5 py-2 hover:bg-[#1E6EA7] rounded-md bg-transparent border hover:text-white transition-all duration-200 font-medium"
+                            onClick={() => setSignInOpen(true)}
+                        >
                             Sign in
                         </button>
-                            {/* // Update the sign up button in your header: */}
+
+                        {/* Sign Up */}
                         <button
-                                className="btn-primary"
-                            onClick={() => setSignUpModalOpen(true)}
+                            className="btn-primary"
+                            onClick={() => setSignUpOpen(true)}
                         >
                             Sign up
                         </button>
-
-                        {/* Add the modal at the bottom of your Header return statement (before closing </header>): */}
-                        <SignUp_btn
-                            isOpen={signUpModalOpen}
-                            onClose={() => setSignUpModalOpen(false)}
-                        />
                     </div>
+
+                    {/* Modals */}
+                    <SignIn_btn
+                        isOpen={signInOpen}
+                        onClose={() => setSignInOpen(false)}
+                    />
+
+                    <SignUp_btn
+                        isOpen={signUpOpen}
+                        onClose={() => setSignUpOpen(false)}
+                    />
+
 
 
 

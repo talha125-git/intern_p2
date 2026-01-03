@@ -5,7 +5,7 @@
 
 🔹 2. Run the following commands in terminal:
 		git add .
-		git commit -m "Add 5_Flexible_workforce Section "
+		git commit -m "Render/Added Hirer and worker in SignUp btn Section "
 		git push origin main
 
 		npm run build
