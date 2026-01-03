@@ -1,9 +1,11 @@
-// components/SignUpModal.jsx
 import { motion, AnimatePresence } from "framer-motion";
-import Person_logo from "../assets/person_logo.png"
-import building_logo from "../assets/building_logo.png"
+import { useNavigate } from "react-router-dom";
+import Person_logo from "../assets/person_logo.png";
+import building_logo from "../assets/building_logo.png";
 
 const SignIn_Modal = ({ isOpen, onClose }) => {
+    const navigate = useNavigate();
+
     if (!isOpen) return null;
 
     return (
@@ -23,7 +25,6 @@ const SignIn_Modal = ({ isOpen, onClose }) => {
                     onClick={(e) => e.stopPropagation()}
                 >
                     <div className="flex justify-between items-center mb-6">
-                        <h2 className="text-xl font-bold"></h2>
                         <h2 className="text-xl font-bold">Sign In</h2>
                         <button
                             onClick={onClose}
@@ -34,27 +35,38 @@ const SignIn_Modal = ({ isOpen, onClose }) => {
                     </div>
 
                     <div className="space-y-4">
-                        {/* Job Seeker Option */}
-                        <button className="w-full flex gap-4 p-4 border border-gray-300 rounded-lg hover:border-green-500 hover:bg-green-50 transition-all text-left">
-                            <div>
-                                <img src={Person_logo} className=" w-20" alt="" />
-                            </div>
-                            <div className=" flex flex-col justify-center">
-                            <h2 className="font-bold text-gray-800">I'm a Worker</h2>
-                            <p className="text-gray-600 text-sm mt-1">I'm looking for Job</p>
+
+                        {/* Worker */}
+                        <button
+                            onClick={() => {
+                                onClose();
+                                navigate("/signup/login"); // <-- goes to Worker_login page
+                            }}
+                            className="w-full flex gap-4 p-4 border border-gray-300 rounded-lg hover:border-green-500 hover:bg-green-50 transition-all text-left"
+                        >
+                            <img src={Person_logo} className="w-20" alt="" />
+                            <div className="flex flex-col justify-center">
+                                <h2 className="font-bold text-gray-800">I'm a Worker</h2>
+                                <p className="text-gray-600 text-sm">I'm looking for Job</p>
                             </div>
                         </button>
 
-                        {/* Business Option */}
-                        <button className="w-full flex gap-4 p-4 border border-gray-300 rounded-lg hover:border-green-500 hover:bg-green-50 transition-all text-left">
-                            <div>
-                                <img src={building_logo} className=" w-20" alt="" />
-                            </div>
-                            <div className=" flex flex-col justify-center">
-                            <h2 className="font-bold text-gray-800">I'm a Hirer</h2>
-                            <p className="text-gray-600 text-sm mt-1">I'm looking for staff</p>
+
+                        {/* Hirer */}
+                        <button
+                            onClick={() => {
+                                onClose();
+                                navigate("/signup/hirer");
+                            }}
+                            className="w-full flex gap-4 p-4 border border-gray-300 rounded-lg hover:border-green-500 hover:bg-green-50 transition-all text-left"
+                        >
+                            <img src={building_logo} className="w-20" alt="" />
+                            <div className="flex flex-col justify-center">
+                                <h2 className="font-bold text-gray-800">I'm a Hirer</h2>
+                                <p className="text-gray-600 text-sm">I'm looking for staff</p>
                             </div>
                         </button>
+
                     </div>
                 </motion.div>
             </motion.div>
