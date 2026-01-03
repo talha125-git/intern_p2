@@ -5,6 +5,9 @@ import Trusted_3 from "./Componants/3_Trusted.jsx";
 import Manage_4 from './Componants/4_Manage.jsx'
 import Flexible_workforce_5 from './Componants/5_Flexible_workforce.jsx'
 import CoopleHelps_6 from "./Componants/CoopleHelps_6.jsx"
+import SignUpModal from "./Componants/SignUp_btn";
+import WorkerSignUpPage from "./Componants/Sign_up/Worker_signUp.jsx";
+import HirerSignUpPage from "./Componants/Sign_up/Hirer_SignUp.jsx";
 import "./App.css";
 
 function HomePage() {
@@ -28,6 +31,9 @@ function App() {
         <main className="pt-16">
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/signup" element={<SignUpModal />} />
+            <Route path="/signup/worker" element={<WorkerSignUpPage />} />
+            <Route path="/signup/hirer" element={<HirerSignUpPage />} />
           </Routes>
         </main>
       </div>

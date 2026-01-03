@@ -1,15 +1,22 @@
-// components/SignUpModal.jsx
+// Componants/SignUp_btn.jsx (Updated)
 import Person_logo from "../assets/person_logo.png"
 import building_logo from "../assets/building_logo.png"
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import Hirer_SignUp from "./Sign_up/Hirer_SignUp";
-import Worker_signUp from "./Sign_up/Worker_signUp";
+import { useNavigate } from "react-router-dom";
 
 const SignUpModal = ({ isOpen, onClose }) => {
     const [signupType, setSignupType] = useState(null); // "worker" | "hirer"
+    const navigate = useNavigate();
 
     if (!isOpen) return null;
+
+    // Function to handle navigation
+    const handleSignupTypeSelect = (type) => {
+        setSignupType(null);
+        onClose(); // Close the modal
+        navigate(`/signup/${type}`); // Navigate to the full page
+    };
 
     return (
         <AnimatePresence mode="wait">
@@ -49,7 +56,7 @@ const SignUpModal = ({ isOpen, onClose }) => {
                                 <motion.button
                                     whileHover={{ scale: 1.02 }}
                                     whileTap={{ scale: 0.98 }}
-                                    onClick={() => setSignupType("worker")}
+                                    onClick={() => handleSignupTypeSelect("worker")}
                                     className="w-full flex gap-4 p-4 border border-gray-300 rounded-lg hover:border-green-500 hover:bg-green-50 transition-all text-left"
                                 >
                                     <img src={Person_logo} className="w-20" alt="Worker" />
@@ -65,7 +72,7 @@ const SignUpModal = ({ isOpen, onClose }) => {
                                 <motion.button
                                     whileHover={{ scale: 1.02 }}
                                     whileTap={{ scale: 0.98 }}
-                                    onClick={() => setSignupType("hirer")}
+                                    onClick={() => handleSignupTypeSelect("hirer")}
                                     className="w-full flex gap-4 p-4 border border-gray-300 rounded-lg hover:border-green-500 hover:bg-green-50 transition-all text-left"
                                 >
                                     <img src={building_logo} className="w-20" alt="Hirer" />
@@ -90,10 +97,10 @@ const SignUpModal = ({ isOpen, onClose }) => {
                                     transition={{ duration: 0.2 }}
                                     className="h-full"
                                 >
-                                    <Worker_signUp 
-                                        onClose={() => setSignupType(null)} 
-                                        goBack={() => setSignupType(null)}
-                                    />
+                                    {/* This will now redirect to full page */}
+                                    <div className="text-center py-8">
+                                        <p>Redirecting to worker signup page...</p>
+                                    </div>
                                 </motion.div>
                             )}
 
@@ -107,10 +114,10 @@ const SignUpModal = ({ isOpen, onClose }) => {
                                     transition={{ duration: 0.2 }}
                                     className="h-full"
                                 >
-                                    <Hirer_SignUp 
-                                        onClose={() => setSignupType(null)} 
-                                        goBack={() => setSignupType(null)}
-                                    />
+                                    {/* This will now redirect to full page */}
+                                    <div className="text-center py-8">
+                                        <p>Redirecting to hirer signup page...</p>
+                                    </div>
                                 </motion.div>
                             )}
                         </AnimatePresence>
