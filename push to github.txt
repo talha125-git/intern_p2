@@ -5,7 +5,7 @@
 
 🔹 2. Run the following commands in terminal:
 		git add .
-		git commit -m "Adjust paths "
+		git commit -m "Add workforce_planning Section "
 		git push origin talha
 	
 		npm run build
