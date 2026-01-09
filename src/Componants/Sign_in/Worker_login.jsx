@@ -23,6 +23,60 @@ const LoginPage = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log('Login attempt:', formData);
+
+        setError("");
+    setLoading(true);
+
+    const payload = {
+      email: email.trim(),
+      password: password,
+      user_type: 'emp'
+    };
+
+    console.log("Sending payload:", payload);
+
+    try {
+      const response = await fetch("https://iyouworks.taxaccolega.co.uk/index.php/api/users/login", {
+        method: "POST",
+        headers: {
+        //   "Content-Type": "application/json",
+          "iU-API-KEY": "1234", // Add this line
+        },
+        body: JSON.stringify(payload),
+      });
+
+      console.log("Response status:", response.status);
+      
+      const responseText = await response.text();
+      console.log("Response text:", responseText);
+      
+      let data;
+      try {
+        data = JSON.parse(responseText);
+      } catch (parseError) {
+        console.error("Failed to parse JSON:", parseError);
+        throw new Error(`Invalid JSON response: ${responseText}`);
+      }
+
+      console.log("Response data:", data);
+
+      if (response.ok && (data.success || data.status)) {
+        if (data.token) {
+          localStorage.setItem("token", data.token);
+          localStorage.setItem("user", JSON.stringify(data.user || {}));
+        }
+        alert("Login Successful ✔️");
+        navigate("/dashboard");
+      } else {
+        setError(data.message || data.error || "Invalid email or password");
+      }
+    } catch (err) {
+      console.error("Full error:", err);
+      setError(err.message || "Server Error 🚨");
+    } finally {
+      setLoading(false);
+    }
+
         // Add your authentication logic here
     };
 

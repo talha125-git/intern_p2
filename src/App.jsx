@@ -2,9 +2,10 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header_1 from "./Componants/1_Header.jsx";
 import Hero_2 from "./Componants/2_Hero.jsx";
 import Trusted_3 from "./Componants/3_Trusted.jsx";
-import Manage_4 from './Componants/4_Manage.jsx'
-import Flexible_workforce_5 from './Componants/5_Flexible_workforce.jsx'
-import CoopleHelps_6 from "./Componants/CoopleHelps_6.jsx"
+import Manage_4 from './Componants/4_Manage.jsx';
+import Flexible_workforce_5 from './Componants/5_Flexible_workforce.jsx';
+import CoopleHelps_6 from "./Componants/6_CoopleHelps.jsx";
+import WorkforcePlanning from "./Componants/7_workforce_planning.jsx";
 
 import SignUpModal from "./Componants/SignUp_btn";
       // Sign_up Btn
@@ -24,6 +25,7 @@ function HomePage() {
       <Manage_4 />
       <Flexible_workforce_5 />
       <CoopleHelps_6 />
+      <WorkforcePlanning />
     </>
   );
 }

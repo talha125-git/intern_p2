@@ -28,10 +28,10 @@ const CoopleHelps_6 = () => {
                 </div>
 
                 <div className='flex justify-center mt-10 '>
-                <button className='btn-primary px-16 py-3 text-sm'>
-                    Get started
-                </button>
-</div>
+                    <button className='btn-primary px-16 py-3 text-sm'>
+                        Get started
+                    </button>
+                </div>
             </div>
         </section>
     )
