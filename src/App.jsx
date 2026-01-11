@@ -14,7 +14,15 @@ import HirerSignUpPage from "./Componants/Sign_up/Hirer_SignUp.jsx";
     // Sign_in / Login Btn
 import Worker_login from "./Componants/Sign_in/Worker_login.jsx"; 
 import Hirer_login from "./Componants/Sign_in/Hirer_login.jsx";
-import FindWork from "./Componants/FindWork.jsx";
+import FindWork from "./pages/FindWork.jsx";
+import EmpDashboard from "./pages/EmpDashboard.jsx";
+import HirerDashboard from "./pages/HirerDashboard.jsx";
+import Feedbacks from "./pages/Feedbacks";
+import Followers from "./pages/Followers";
+import Following from "./pages/Following";
+import WorkHistory from "./pages/WorkHistory";
+import EmpProfile from "./pages/EmpProfile";
+import HirerProfile from "./pages/HirerProfile";
 import "./App.css";
 
 function HomePage() {
@@ -40,13 +48,19 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/signup" element={<SignUpModal />} />
-
             <Route path="/signup/worker" element={<WorkerSignUpPage />} />
             <Route path="/signup/hirer" element={<HirerSignUpPage />} />
-
             <Route path="/login/worker" element={<Worker_login />} /> 
             <Route path="/login/hirer" element={<Hirer_login />} /> 
             <Route path="/find-work" element={<FindWork />} /> 
+            <Route path="/emp-dashboard" element={<EmpDashboard />} />
+            <Route path="/hirer-dashboard" element={<HirerDashboard />} />
+            <Route path="/feedbacks" element={<Feedbacks />} />
+            <Route path="/followers" element={<Followers />} />
+            <Route path="/following" element={<Following />} />
+            <Route path="/work-history" element={<WorkHistory />} />
+            <Route path="/emp-profile" element={<EmpProfile />} />
+            <Route path="/hirer-profile" element={<HirerProfile />} />
           </Routes>
         </main>
       </div>
