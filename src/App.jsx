@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header_1 from "./Componants/1_Header.jsx";
 import Hero_2 from "./Componants/2_Hero.jsx";
@@ -25,6 +25,7 @@ import WorkHistory from "./pages/WorkHistory";
 import EmpProfile from "./pages/EmpProfile";
 import HirerProfile from "./pages/HirerProfile";
 import Settings from "./pages/Settings";
+import Services from "./pages/Services";
 import BottomNavigation from "./Componants/BottomNavigation";
 import "./App.css";
 
@@ -42,11 +43,18 @@ function HomePage() {
 }
 
 function App() {
- const [profileOpen, setProfileOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [profileOpen, setProfileOpen] = useState(false);
+
+  useEffect(() => {
+    const user_id = localStorage.getItem("user_id");
+    setIsLoggedIn(!!user_id);
+  }, []);
+
   return (
     <Router basename="/intern_p2">
       <div className="min-h-screen">
-      <Header_1 open={profileOpen} setOpen={setProfileOpen} />
+        <Header_1 open={profileOpen} setOpen={setProfileOpen} />
 
         <main className="pt-16">
           <Routes>
@@ -54,9 +62,9 @@ function App() {
             <Route path="/signup" element={<SignUpModal />} />
             <Route path="/signup/worker" element={<WorkerSignUpPage />} />
             <Route path="/signup/hirer" element={<HirerSignUpPage />} />
-            <Route path="/login/worker" element={<Worker_login />} /> 
-            <Route path="/login/hirer" element={<Hirer_login />} /> 
-            <Route path="/find-work" element={<FindWork />} /> 
+            <Route path="/login/worker" element={<Worker_login />} />
+            <Route path="/login/hirer" element={<Hirer_login />} />
+            <Route path="/find-work" element={<FindWork />} />
             <Route path="/emp-dashboard" element={<EmpDashboard />} />
             <Route path="/hirer-dashboard" element={<HirerDashboard />} />
             <Route path="/feedbacks" element={<Feedbacks />} />
@@ -66,10 +74,12 @@ function App() {
             <Route path="/emp-profile" element={<EmpProfile />} />
             <Route path="/hirer-profile" element={<HirerProfile />} />
             <Route path="/settings" element={<Settings />} />
+            <Route path="/services" element={<Services />} />
           </Routes>
         </main>
-        <BottomNavigation setProfileOpen={setProfileOpen} />
 
+        {/* show only when logged in */}
+        {isLoggedIn && <BottomNavigation setProfileOpen={setProfileOpen} />}
       </div>
     </Router>
   );

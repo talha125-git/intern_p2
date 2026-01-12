@@ -23,6 +23,7 @@ const Header = ({ open, setOpen }) => {
     const [mobileDropdown, setMobileDropdown] = useState(null);
     const [searchOpen, setSearchOpen] = useState(false);
     const [searchQuery, setSearchQuery] = useState("");
+    const role = localStorage.getItem("role");
 
     // Prevent scrolling when menu is open
     useEffect(() => {
@@ -37,7 +38,6 @@ const Header = ({ open, setOpen }) => {
         }
 
          const user_id = localStorage.getItem("user_id");
-         console.log(user_id);
          setIsLoggedIn(!!user_id);   
 
         return () => {
@@ -344,7 +344,7 @@ const Header = ({ open, setOpen }) => {
                                           {open && (
                                             <div className="absolute right-0 mt-2 w-40 bg-white border border-gray-200 rounded-md shadow-lg z-50">
                                               <ul className="flex flex-col">
-                                                <li>
+                                                {role === "emp" && (<li>
                                                   <button
                                                     className="w-full text-left px-4 py-2 hover:bg-gray-100 text-gray-800"
                                                     onClick={() => {
@@ -354,8 +354,8 @@ const Header = ({ open, setOpen }) => {
                                                   >
                                                     Basic Info
                                                   </button>
-                                                </li>
-                                                <li>
+                                                </li> )}
+                                                {role === "self-emp" && (<li>
                                                   <button
                                                     className="w-full text-left px-4 py-2 hover:bg-gray-100 text-gray-800"
                                                     onClick={() => {
@@ -365,7 +365,7 @@ const Header = ({ open, setOpen }) => {
                                                   >
                                                     Basic Info
                                                   </button>
-                                                </li>
+                                                </li> )}
                                                 <li>
                                                   <button
                                                     className="w-full text-left px-4 py-2 hover:bg-gray-100 text-gray-800"
@@ -381,7 +381,7 @@ const Header = ({ open, setOpen }) => {
                                                   <button
                                                     className="w-full text-left px-4 py-2 hover:bg-gray-100 text-gray-800"
                                                     onClick={() => {
-                                                      console.log("Go to profile");
+                                                      navigate("/services");
                                                       setOpen(false);
                                                     }}
                                                   >

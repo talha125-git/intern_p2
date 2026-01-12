@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import { Eye, EyeOff, Mail, Lock, LogIn, Building2, Briefcase, Users } from 'lucide-react';
 
@@ -20,6 +20,11 @@ const HirerLoginPage = () => {
             [name]: type === 'checkbox' ? checked : value
         }));
     };
+const [isLoggedIn, setIsLoggedIn] = useState(false);
+useEffect(() => {
+    const user_id = localStorage.getItem("user_id");
+    setIsLoggedIn(!!user_id);
+  }, []);
 
 const handleSubmit = async (e) => {
 
@@ -54,9 +59,10 @@ const handleSubmit = async (e) => {
       if (response.ok && (data.status || data.message)) {
 
           localStorage.setItem("token", data.token);
+          localStorage.setItem("role", 'self-emp');
           localStorage.setItem("user_id", data.user_id);
           localStorage.setItem("user", JSON.stringify(data.user || {}));
-      
+          setIsLoggedIn(true);
         navigate("/hirer-dashboard");
       } else {
         setError(data.message || data.error || "Invalid email or password");

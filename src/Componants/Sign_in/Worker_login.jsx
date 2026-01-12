@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import { Mail, Lock, LogIn } from 'lucide-react';
 
@@ -22,7 +22,11 @@ const LoginPage = () => {
       [name]: type === 'checkbox' ? checked : value
     }));
   };
-
+const [isLoggedIn, setIsLoggedIn] = useState(false);
+useEffect(() => {
+    const user_id = localStorage.getItem("user_id");
+    setIsLoggedIn(!!user_id);
+  }, []);
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -56,8 +60,9 @@ const LoginPage = () => {
 
           localStorage.setItem("token", data.token);
           localStorage.setItem("user_id", data.user_id);
+          localStorage.setItem("role", 'self-emp');
           localStorage.setItem("user", JSON.stringify(data.user || {}));
-      
+          setIsLoggedIn(true);      
         navigate("/emp/dashboard");
       } else {
         setError(data.message || data.error || "Invalid email or password");
