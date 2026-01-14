@@ -9,6 +9,7 @@ import CoopleHelps_6 from "./Componants/6_CoopleHelps.jsx";
 import WorkforcePlanning from "./Componants/7_workforce_planning.jsx";
 import What_workforce from "./Componants/8_What_workforce.jsx";
 import With_Coople from "./Componants/9_With_Coople.jsx";
+import Flexible_talent from "./Componants/10_Flexible_talent.jsx";
 
 import SignUpModal from "./Componants/SignUp_btn";
 // Sign_up Btn
@@ -51,6 +52,7 @@ import Sidebar from "./Componants/Sidebar.jsx";
 
 
 
+
 function HomePage() {
   return (
     <>
@@ -62,6 +64,7 @@ function HomePage() {
       <WorkforcePlanning />
       <What_workforce />
       <With_Coople />
+      <Flexible_talent />
     </>
   );
 }
