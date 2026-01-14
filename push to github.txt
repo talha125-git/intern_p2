@@ -5,8 +5,8 @@
 
 🔹 2. Run the following commands in terminal:
 		git add .
-		git commit -m "Add 8_What_workforce Section "
-		git push origin main 
+		git commit -m "Add 9_With_Coople Section "
+		git push origin talha 
 	
 		npm run build
 		npm run deploy
