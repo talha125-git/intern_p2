@@ -5,8 +5,8 @@
 
 🔹 2. Run the following commands in terminal:
 		git add .
-		git commit -m "Add workforce_planning Section "
-		git push origin main 
+		git commit -m "Add 13_Latest_news Section "
+		git push origin talha 
 	
 		npm run build
 		npm run deploy
